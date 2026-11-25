@@ -3,6 +3,7 @@ import TrackBanner from "../../components/TrackBanner";
 import { PAPERS } from "../../components/portfolio-data";
 import { WantedStars } from "../../components/GtaHud";
 import { useLanguage } from "../../components/LanguageContext";
+import ScrollReveal from "../../components/ScrollReveal";
 
 export default function Security() {
   const { locale } = useLanguage();
@@ -74,124 +75,138 @@ export default function Security() {
 
       {/* Security Status HUD */}
       <section className="wrap pt-8 pb-4">
-        <div className="p-4 bg-[#140822]/90 border border-[#ff2a85]/40 rounded-lg flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="rec-dot" />
-            <span className="text-xs font-mono font-bold text-[#ffe600] uppercase tracking-wider">
-              DEFCON LEVEL // CSIRT READY
-            </span>
+        <ScrollReveal>
+          <div className="p-4 bg-[#140822]/90 border border-[#ff2a85]/40 rounded-lg flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="rec-dot" />
+              <span className="text-xs font-mono font-bold text-[#ffe600] uppercase tracking-wider">
+                DEFCON LEVEL // CSIRT READY
+              </span>
+            </div>
+            <WantedStars count={5} active={5} />
           </div>
-          <WantedStars count={5} active={5} />
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Bidang Praktik */}
       <section id="praktik" className="wrap section">
-        <div className="section-head">
-          <div>
-            <span className="evidence-stamp mb-3">CYBER INVESTIGATION & INFRASTRUCTURE</span>
-            <h2>{isEn ? "Expertise & Practice Areas" : "Keahlian & Bidang Praktik"}</h2>
+        <ScrollReveal>
+          <div className="section-head">
+            <div>
+              <span className="evidence-stamp mb-3">CYBER INVESTIGATION & INFRASTRUCTURE</span>
+              <h2>{isEn ? "Expertise & Practice Areas" : "Keahlian & Bidang Praktik"}</h2>
+            </div>
+            <p className="text-sm text-[#cfc2d7] max-w-md">
+              {isEn
+                ? "Focusing on system reliability, data integrity, and infrastructure resilience against potential cyber threats."
+                : "Fokus pada keandalan sistem, integritas data, dan ketahanan infrastruktur dari potensi insiden keamanan siber."}
+            </p>
           </div>
-          <p className="text-sm text-[#cfc2d7] max-w-md">
-            {isEn
-              ? "Focusing on system reliability, data integrity, and infrastructure resilience against potential cyber threats."
-              : "Fokus pada keandalan sistem, integritas data, dan ketahanan infrastruktur dari potensi insiden keamanan siber."}
-          </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {practice.map((item) => (
-            <article key={item.title} className="gta-card flex flex-col justify-between">
-              <div>
-                <span className="text-xs font-mono font-bold text-[#ff2a85] uppercase tracking-wider block mb-2">
-                  {item.experience}
-                </span>
-                <h3 className="text-2xl text-white font-display mb-3">{item.title}</h3>
-                <p className="text-sm text-[#d4c7dc] leading-relaxed mb-4">{item.text}</p>
-              </div>
+          {practice.map((item, idx) => (
+            <ScrollReveal key={item.title} delay={idx * 0.1}>
+              <article className="gta-card flex flex-col justify-between h-full">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[#ff2a85] uppercase tracking-wider block mb-2">
+                    {item.experience}
+                  </span>
+                  <h3 className="text-2xl text-white font-display mb-3">{item.title}</h3>
+                  <p className="text-sm text-[#d4c7dc] leading-relaxed mb-4">{item.text}</p>
+                </div>
 
-              <div className="pt-3 border-t border-[#ff2a85]/20">
-                <ul className="tool-tags">
-                  {item.tools.map((tool) => (
-                    <li key={tool}>{tool}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+                <div className="pt-3 border-t border-[#ff2a85]/20">
+                  <ul className="tool-tags">
+                    {item.tools.map((tool) => (
+                      <li key={tool}>{tool}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
       {/* Training & Bootcamps */}
       <section className="wrap section">
-        <div className="section-head">
-          <div>
-            <span className="evidence-stamp mb-3">SECURITY CREDENTIALS</span>
-            <h2>{isEn ? "Verified Training & Bootcamps" : "Pelatihan & Bootcamp"}</h2>
+        <ScrollReveal>
+          <div className="section-head">
+            <div>
+              <span className="evidence-stamp mb-3">SECURITY CREDENTIALS</span>
+              <h2>{isEn ? "Verified Training & Bootcamps" : "Pelatihan & Bootcamp"}</h2>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {bootcamps.map((b) => (
-            <div key={b.name} className="gta-card">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-mono font-bold text-[#ffe600]">{b.year}</span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-[#ff2a85]/20 text-[#ff2a85] font-mono font-bold">
-                  TRAINING
-                </span>
+          {bootcamps.map((b, idx) => (
+            <ScrollReveal key={b.name} delay={idx * 0.1}>
+              <div className="gta-card h-full">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono font-bold text-[#ffe600]">{b.year}</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-[#ff2a85]/20 text-[#ff2a85] font-mono font-bold">
+                    TRAINING
+                  </span>
+                </div>
+                <h3 className="text-xl font-display text-white mb-1">{b.name}</h3>
+                <p className="text-sm font-bold text-[#ff7a45] mb-2">{b.track}</p>
+                <p className="text-xs text-[#cfc2d7] leading-relaxed">{b.desc}</p>
               </div>
-              <h3 className="text-xl font-display text-white mb-1">{b.name}</h3>
-              <p className="text-sm font-bold text-[#ff7a45] mb-2">{b.track}</p>
-              <p className="text-xs text-[#cfc2d7] leading-relaxed">{b.desc}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
       {/* Publications */}
       <section id="publications" className="wrap section">
-        <div className="section-head">
-          <div>
-            <span className="evidence-stamp mb-3">PEER-REVIEWED SCIENTIFIC JOURNALS</span>
-            <h2>{isEn ? "Scientific Research Publications" : "Publikasi Riset Ilmiah"}</h2>
+        <ScrollReveal>
+          <div className="section-head">
+            <div>
+              <span className="evidence-stamp mb-3">PEER-REVIEWED SCIENTIFIC JOURNALS</span>
+              <h2>{isEn ? "Scientific Research Publications" : "Publikasi Riset Ilmiah"}</h2>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         <div className="space-y-6">
-          {PAPERS.map((p) => (
-            <article key={p.doi} className="gta-card">
-              <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
-                <span className="text-xs font-mono font-bold text-[#ff7a45] uppercase">
-                  {p.journal} · {p.issue}
-                </span>
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#ffe600]/20 text-[#ffe600] font-bold">
-                  VERIFIED DOI
-                </span>
-              </div>
-              <h3 className="text-2xl text-white font-display mb-2">
-                <a
-                  href={"https://doi.org/" + p.doi}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#ffe600] transition-colors"
-                >
-                  {p.title} ↗
-                </a>
-              </h3>
-              <p className="text-sm text-[#cfc2d7] mb-3">
-                {isEn ? "Authors" : "Penulis"}: {p.authors}
-              </p>
-              <div className="flex items-center justify-between pt-3 border-t border-[#ff2a85]/20">
-                <a
-                  href={"https://doi.org/" + p.doi}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-mono font-bold text-[#ff2a85] hover:text-[#ffe600]"
-                >
-                  {isEn ? "Open DOI" : "Buka DOI"}: {p.doi} ↗
-                </a>
-              </div>
-            </article>
+          {PAPERS.map((p, idx) => (
+            <ScrollReveal key={p.doi} delay={idx * 0.1}>
+              <article className="gta-card">
+                <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                  <span className="text-xs font-mono font-bold text-[#ff7a45] uppercase">
+                    {p.journal} · {p.issue}
+                  </span>
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#ffe600]/20 text-[#ffe600] font-bold">
+                    VERIFIED DOI
+                  </span>
+                </div>
+                <h3 className="text-2xl text-white font-display mb-2">
+                  <a
+                    href={"https://doi.org/" + p.doi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#ffe600] transition-colors"
+                  >
+                    {p.title} ↗
+                  </a>
+                </h3>
+                <p className="text-sm text-[#cfc2d7] mb-3">
+                  {isEn ? "Authors" : "Penulis"}: {p.authors}
+                </p>
+                <div className="flex items-center justify-between pt-3 border-t border-[#ff2a85]/20">
+                  <a
+                    href={"https://doi.org/" + p.doi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-mono font-bold text-[#ff2a85] hover:text-[#ffe600]"
+                  >
+                    {isEn ? "Open DOI" : "Buka DOI"}: {p.doi} ↗
+                  </a>
+                </div>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </section>

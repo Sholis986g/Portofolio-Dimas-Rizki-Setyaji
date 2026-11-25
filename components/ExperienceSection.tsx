@@ -54,6 +54,14 @@ export default function ExperienceSection() {
         {filtered.map((item, idx) => (
           <motion.article
             key={item.role + idx}
+            initial={reduce ? undefined : { opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{
+              duration: 0.55,
+              delay: (idx % 2) * 0.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             whileHover={reduce ? undefined : { y: -4 }}
             className="gta-card flex flex-col justify-between"
           >
@@ -105,8 +113,17 @@ export default function ExperienceSection() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
         {achievements.map((ach, i) => (
-          <div
+          <motion.div
             key={i}
+            initial={reduce ? undefined : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{
+              duration: 0.5,
+              delay: i * 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            whileHover={reduce ? undefined : { y: -4 }}
             className="p-4 bg-[#140822]/90 border border-[#ff2a85]/30 rounded-lg relative overflow-hidden backdrop-blur-md"
           >
             <div className="flex items-center justify-between mb-2">
@@ -118,7 +135,7 @@ export default function ExperienceSection() {
             <h4 className="text-lg font-display text-white mb-1">{ach.title}</h4>
             <p className="text-xs font-bold text-[#ff2a85] mb-2">{ach.category}</p>
             <p className="text-xs text-[#c9bcd2] leading-relaxed">{ach.description}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

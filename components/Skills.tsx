@@ -24,12 +24,19 @@ export default function Skills() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {tiers.map((tier) => (
+        {tiers.map((tier, idx) => (
           <motion.article
             key={tier.category}
+            initial={reduce ? undefined : { opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{
+              duration: 0.6,
+              delay: idx * 0.12,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="gta-card flex flex-col justify-between"
             whileHover={reduce ? undefined : { y: -5 }}
-            transition={{ duration: 0.2 }}
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">

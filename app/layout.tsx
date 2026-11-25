@@ -4,6 +4,7 @@ import { displayFace } from "./display-font";
 import GtaTransition from "../components/GtaTransition";
 import SiteNav from "../components/SiteNav";
 import Footer from "../components/Footer";
+import ScrollProgress from "../components/ScrollProgress";
 import { LanguageProvider } from "../components/LanguageContext";
 import "./globals.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="id" className={`${displayFace.variable} ${inter.variable}`}>
       <body>
         <LanguageProvider>
+          <ScrollProgress />
           <GtaTransition />
           <a className="skip" href="#utama">
             Lewati navigasi

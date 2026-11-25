@@ -29,6 +29,14 @@ export default function EducationSection() {
           {educationList.map((edu, idx) => (
             <motion.div
               key={idx}
+              initial={reduce ? undefined : { opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                duration: 0.5,
+                delay: idx * 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               whileHover={reduce ? undefined : { x: 4 }}
               className="p-5 bg-[#170a24]/80 border-l-4 border-l-[#ff2a85] border border-[#ff2a85]/30 rounded-r-lg"
             >
@@ -53,6 +61,14 @@ export default function EducationSection() {
           {PROFILE.gear.map((item, idx) => (
             <motion.div
               key={idx}
+              initial={reduce ? undefined : { opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                duration: 0.5,
+                delay: idx * 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               whileHover={reduce ? undefined : { x: 4 }}
               className="p-5 bg-[#170a24]/80 border-l-4 border-l-[#ffe600] border border-[#ffe600]/30 rounded-r-lg"
             >

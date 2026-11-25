@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { gallery } from "./gallery";
 import { useLanguage } from "./LanguageContext";
 
@@ -8,6 +9,7 @@ const rawFilters = ["Semua", ...new Set(gallery.map((item) => item.type))];
 
 export default function Projects({ all = false }: { all?: boolean }) {
   const { locale } = useLanguage();
+  const reduce = useReducedMotion();
   const [filter, setFilter] = useState("Semua");
   const items = all
     ? gallery.filter((item) => filter === "Semua" || item.type === filter)
@@ -46,10 +48,18 @@ export default function Projects({ all = false }: { all?: boolean }) {
 
       <div className="project-grid">
         {items.map((project, i) => (
-          <button
+          <motion.button
             className="project"
             type="button"
             key={project.image}
+            initial={reduce ? undefined : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{
+              duration: 0.5,
+              delay: (i % 3) * 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             aria-label={(locale === "en" ? "Open " : "Buka ") + project.name}
             onClick={() => {
               setIndex(i);
@@ -70,7 +80,7 @@ export default function Projects({ all = false }: { all?: boolean }) {
                 {project.name} <span aria-hidden="true">↗</span>
               </span>
             </div>
-          </button>
+          </motion.button>
         ))}
       </div>
 
