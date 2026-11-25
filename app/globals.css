@@ -54,3 +54,39 @@ footer small { display:block; color:#aaa; margin-top:2rem; }
 .papers a { padding-block:1.5rem; border-bottom:1px solid #ffffff30; }
 @media(min-width:720px){ .project-grid,.skills-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .about { grid-template-columns:4fr 6fr; } }
 @media(prefers-reduced-motion:reduce){ html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+
+/* Pilihan visual beranda dan galeri layar penuh. */
+.scene-layer { position:absolute; inset:0; }
+.title-mask { display:block; overflow:hidden; padding-bottom:.065em; margin-bottom:-.065em; }
+.title-mask > span { display:block; }
+.scene-picker { position:absolute; z-index:1; bottom:2rem; right:6%; display:flex; align-items:center; gap:.45rem; }
+.scene-picker button,.viewer button { cursor:pointer; border:1px solid #ffffff40; border-radius:4px; }
+.scene-picker button { display:grid; gap:.3rem; background:#19121fe6; padding:.35rem; font-size:.69rem; color:#e4d7df; }
+.scene-picker button img { width:3.5rem; height:2rem; object-fit:cover; border-radius:2px; }
+.scene-picker button[aria-pressed=true] { border-color:var(--pink); color:var(--yellow); }
+.project { text-align:left; cursor:zoom-in; }
+.project-art,.project-title { display:block; }
+.project-title { display:flex; justify-content:space-between; font-size:clamp(1.1rem,2vw,1.45rem); font-weight:600; }
+.viewer { position:fixed; inset:0; margin:auto; width:min(960px,94vw); max-height:94svh; overflow:auto; background:#171319; color:white; border:1px solid #ffffff30; border-radius:8px; padding:clamp(.8rem,2vw,1.6rem); }
+.viewer::backdrop { background:#08060ae8; }
+body:has(.viewer[open]) { overflow:hidden; }
+.viewer-head,.viewer-controls { display:flex; justify-content:space-between; align-items:center; gap:.8rem; }
+.viewer-head small { color:var(--pink); }
+.viewer-head h2 { font-size:clamp(1.65rem,3vw,2.5rem); }
+.viewer button { padding:.6rem .85rem; }
+.viewer button:hover { border-color:var(--pink); }
+.viewer-art { height: min(60svh,620px); position:relative; margin:.85rem 0; background:#0b0a0c; }
+.viewer-art img { object-fit:contain; }
+@media(max-width:719px){ .scene-picker { position:relative; bottom:auto; right:auto; margin:0 6% 2rem; } .hero { flex-direction:column; align-items:stretch; justify-content:flex-end; } .hero-copy { padding-bottom:1.8rem; } }
+@media(prefers-reduced-motion:no-preference) {
+  .title-mask > span { animation: title-in .85s cubic-bezier(.2,.78,.22,1) both; }
+  .title-mask:nth-child(2) > span { animation-delay:.14s; }
+  .hero-copy p,.hero-copy .cta,.scene-picker { animation:rise .6s .25s backwards; }
+  .viewer[open],.viewer-art img { animation:rise .22s ease-out; }
+  @keyframes title-in { from { transform:translateY(105%); } to { transform:translateY(0); } }
+  @keyframes rise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+  @supports (animation-timeline:view()) {
+    .section h2,.portrait,.skill,.project,.stats div { animation:section-in linear both; animation-timeline:view(); animation-range:entry 0% entry 85%; }
+    @keyframes section-in { from { opacity:.45; translate:0 24px; } to { opacity:1; translate:0 0; } }
+  }
+}
