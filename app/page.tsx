@@ -10,7 +10,9 @@ export default function Home() {
     <section id="tentang" className="wrap section about">
       <Image src="/images/avatar_dimas.webp" width={480} height={500} alt="Dimas Rizki Setyaji" className="portrait"/>
       <div><h2>Tentang saya</h2><p>Saya Dimas, desainer dan praktisi TI yang berdomisili di Yogyakarta. Selama lebih dari empat tahun, saya mengerjakan desain visual, mengembangkan aplikasi web, dan mendalami keamanan siber.</p>
-      <Link href="/security">Lihat riset keamanan ↗</Link></div>
+      <p>Di HITS Yogyakarta, saya menerjemahkan brief klien menjadi kampanye digital, materi promosi penerimaan mahasiswa, dan desain cetak. Pekerjaan saya dimulai dari menentukan pesan dan audiens hingga menyiapkan visual untuk publikasi.</p>
+      <p>Di bidang TI, saya mendukung analisis insiden dan dokumentasi teknis bersama BPTSI CSIRT Universitas ‘Aisyiyah Yogyakarta. Untuk sistem antrian RSU Queen Latifa, saya terlibat dalam arsitektur layanan, konfigurasi server, dan deployment berbasis Docker.</p>
+      <div className="track-links"><Link href="/design">Jelajahi desain ↗</Link><Link href="/security">Jelajahi security ↗</Link></div></div>
     </section>
     <Skills/>
     <section className="wrap section"><h2>Pencapaian</h2><dl className="stats">

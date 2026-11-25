@@ -1,3 +1,8 @@
 import Projects from "../../components/Projects";
-export const metadata = {title:"Lab Desain"};
-export default function Design(){return <main id="utama" className="wrap inner"><h1>Lab Desain</h1><p>Desain digital, cetak, dan fotografi.</p><Projects all/></main>;}
+import TrackBanner from "../../components/TrackBanner";
+export const metadata = {title:"Studio Desain"};
+export default function Design() {
+  return <main id="utama"><TrackBanner design/>
+    <section id="galeri" className="wrap section"><h2>Galeri karya</h2><Projects all/></section>
+  </main>;
+}

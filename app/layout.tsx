@@ -17,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
   return <html lang="id" className={displayFace.variable + " " + inter.variable}><body>
     <a className="skip" href="#utama">Lewati navigasi</a>
     <header className="site-nav"><Link className="wordmark" aria-label="DRS — Beranda" href="/">DRS</Link>
-      <nav aria-label="Navigasi utama"><Link href="/#karya">Karya</Link><Link href="/security">Riset</Link><Link href="/#tentang">Tentang</Link><a href="#contact">Kontak ↗</a></nav>
+      <nav aria-label="Navigasi utama"><Link href="/design">Desain</Link><Link href="/security">Security</Link><Link href="/#tentang">Tentang</Link><a href="#contact">Kontak ↗</a></nav>
     </header>
     {children}
     <footer id="contact" className="wrap"><h2>Mari bekerja sama.</h2>
