@@ -1,36 +1,9 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portofolio Dimas Rizki Setyaji
 
-## Getting Started
+Gunakan Node.js versi yang didukung Next.js 16 (20.9+). Jalankan `npm ci` lalu `npm run dev`, dan buka http://localhost:3000. Untuk produksi gunakan `npm run build` lalu `npm start`.
 
-First, run the development server:
+## Font
+Letakkan Pricedown sebagai `public/fonts/pricedown.woff2` atau `public/fonts/pricedown.ttf` sebelum membangun situs. Konfigurasi Next menghasilkan modul font lokal dengan path literal yang diperlukan compiler. Jika belum tersedia, judul memakai Anton. Inter dan Anton berasal dari Google Fonts dan disertakan melalui Fontsource agar build tidak memerlukan akses ke server Google.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Struktur
+Beranda berada di `app/page.tsx`. Galeri dan publikasi tersedia pada `/design` dan `/security`. Gambar proyek serta potret berasal dari arsip portofolio. Panorama pesisir merupakan ilustrasi yang dibuat untuk latar beranda.
