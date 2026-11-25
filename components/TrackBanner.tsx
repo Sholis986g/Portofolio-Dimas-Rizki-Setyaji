@@ -1,37 +1,8 @@
 "use client";
 import Image from "next/image";
-import fs from "node:fs";
-import path from "node:path";
 import { useLanguage } from "./LanguageContext";
 
-function ensureBanners() {
-  try {
-    const list = [
-      {
-        src: "C:/Users/Sholis/AppData/Local/Temp/claude/c0ac74faf6516416/6ae5bf10-2f67-4cff-84dd-26d5d3d52884/images/20.webp",
-        dest: path.join(process.cwd(), "public", "images", "banner-security-v2.webp"),
-        legacy: path.join(process.cwd(), "public", "images", "banner-security.webp"),
-      },
-      {
-        src: "C:/Users/Sholis/AppData/Local/Temp/claude/c0ac74faf6516416/6ae5bf10-2f67-4cff-84dd-26d5d3d52884/images/21.webp",
-        dest: path.join(process.cwd(), "public", "images", "banner-design-v2.webp"),
-        legacy: path.join(process.cwd(), "public", "images", "banner-design.webp"),
-      },
-    ];
-
-    for (const item of list) {
-      if (fs.existsSync(item.src)) {
-        fs.copyFileSync(item.src, item.dest);
-        fs.copyFileSync(item.src, item.legacy);
-      }
-    }
-  } catch {
-    // fallback
-  }
-}
-
 export default function TrackBanner({ design = false }: { design?: boolean }) {
-  ensureBanners();
   const { t } = useLanguage();
 
   return (

@@ -3,7 +3,7 @@ import path from "node:path";
 import type { NextConfig } from "next";
 
 // next/font requires a literal path. Resolve the supplied format before compilation.
-const supplied = ["pricedown.woff2", "pricedown.ttf"].find((name) =>
+const supplied = ["pricedown.woff2", "pricedown.ttf", "pricedown.otf"].find((name) =>
   existsSync(path.join(process.cwd(), "public/fonts", name)),
 );
 const source = supplied
