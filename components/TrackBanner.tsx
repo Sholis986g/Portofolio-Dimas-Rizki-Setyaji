@@ -22,17 +22,17 @@ export default function TrackBanner({ design = false }: { design?: boolean }) {
       <div className="wrap track-copy">
         <span className="hero-hud-ticker mb-3">
           <span className="rec-dot" />
-          <span>{design ? t.track.design_tag : t.track.security_tag}</span>
+          <span className="text-[11px] sm:text-xs">{design ? t.track.design_tag : t.track.security_tag}</span>
         </span>
         <h1 className="text-white">
           <span className="title-mask">
             <span className="highlight">{design ? t.track.design_title : t.track.security_title}</span>
           </span>
         </h1>
-        <p className="text-[#cfc2d7] text-base md:text-lg max-w-xl my-4">
+        <p className="text-[#cfc2d7] text-xs sm:text-sm md:text-base lg:text-lg max-w-xl my-3 sm:my-4 leading-relaxed">
           {design ? t.track.design_desc : t.track.security_desc}
         </p>
-        <a className="cta" href={design ? "#galeri" : "#praktik"}>
+        <a className="cta inline-flex w-full sm:w-auto justify-center text-center" href={design ? "#galeri" : "#praktik"}>
           {design ? t.track.design_cta : t.track.security_cta}
         </a>
       </div>

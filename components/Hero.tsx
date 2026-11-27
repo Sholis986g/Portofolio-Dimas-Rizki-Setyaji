@@ -52,9 +52,9 @@ export default function Hero() {
 
       <div className="hero-shade" />
 
-      {/* GTA VI Main Character (MC) Artwork */}
+      {/* GTA VI Main Character (MC) Artwork with responsive scaling and layering */}
       <div
-        className="absolute right-0 md:right-[2%] lg:right-[6%] bottom-4 md:bottom-12 lg:bottom-16 z-1 pointer-events-none h-[72vh] md:h-[94vh] lg:h-[102vh] max-h-[960px] w-auto aspect-[520/850] select-none flex items-end justify-end"
+        className="absolute right-[-5%] sm:right-0 md:right-[2%] lg:right-[6%] bottom-0 md:bottom-8 lg:bottom-12 z-0 pointer-events-none h-[52vh] sm:h-[65vh] md:h-[88vh] lg:h-[98vh] max-h-[960px] w-auto aspect-[520/850] select-none flex items-end justify-end opacity-25 sm:opacity-40 md:opacity-100 transition-opacity duration-300"
         aria-hidden="true"
       >
         <Image
@@ -67,7 +67,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="hero-copy wrap w-full">
+      <div className="hero-copy wrap w-full max-w-full md:max-w-2xl lg:max-w-3xl relative z-10">
         {/* Name Title with GTA 6 Gradient & Faulty Neon Flicker */}
         <h1>
           <span className="title-mask">
@@ -79,36 +79,36 @@ export default function Hero() {
         </h1>
 
         {/* Subheadline in Sleek Thin Modern Font */}
-        <div className="text-base md:text-xl font-medium tracking-[0.16em] text-[#ffe600] uppercase my-3 drop-shadow-[0_0_10px_rgba(255,230,0,0.3)]">
+        <div className="text-sm sm:text-base md:text-xl font-medium tracking-[0.12em] md:tracking-[0.16em] text-[#ffe600] uppercase my-2 md:my-3 drop-shadow-[0_0_10px_rgba(255,230,0,0.3)]">
           {t.hero.role}
         </div>
 
-        <p className="mt-2 mb-6">
-          <span className="text-sm md:text-base text-[#cfc2d7] leading-relaxed block max-w-2xl">
+        <p className="mt-2 mb-5 md:mb-6">
+          <span className="text-xs sm:text-sm md:text-base text-[#cfc2d7] leading-relaxed block max-w-2xl">
             {t.hero.bio}
           </span>
         </p>
 
-        <div className="flex flex-wrap items-center gap-4 mb-8">
-          <a className="cta" href="#karya">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 md:mb-8">
+          <a className="cta w-full sm:w-auto justify-center text-center" href="#karya">
             {t.hero.explore} <span aria-hidden="true">↓</span>
           </a>
-          <a className="cta-secondary" href="#experience">
+          <a className="cta-secondary w-full sm:w-auto justify-center text-center" href="#experience">
             {t.hero.dossier} <span aria-hidden="true">→</span>
           </a>
         </div>
 
         {/* Interactive GTA VI Scene Selector HUD */}
-        <div className="pt-4 border-t border-[#ff2a85]/30 flex flex-wrap items-center justify-between gap-3">
+        <div className="pt-3 md:pt-4 border-t border-[#ff2a85]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-mono font-bold text-[#9f8ea8] uppercase tracking-wider">
+            <span className="text-[11px] sm:text-xs font-mono font-bold text-[#9f8ea8] uppercase tracking-wider">
               {t.hero.atmosphere}
             </span>
-            <span className="text-[11px] font-mono font-black text-[#ff7a45] uppercase tracking-[0.16em] bg-[#170a24]/90 px-2.5 py-1 border border-[#ff7a45]/40 rounded">
+            <span className="text-[10px] sm:text-[11px] font-mono font-black text-[#ff7a45] uppercase tracking-[0.14em] bg-[#170a24]/90 px-2 py-0.5 sm:px-2.5 sm:py-1 border border-[#ff7a45]/40 rounded">
               {scene.sector}
             </span>
           </div>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Pilih visual latar belakang">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2" role="group" aria-label="Pilih visual latar belakang">
             {scenes.map((item, i) => {
               const isSelected = i === active;
               return (
@@ -117,7 +117,7 @@ export default function Hero() {
                   key={item.image}
                   aria-pressed={isSelected}
                   onClick={() => setActive(i)}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded text-xs font-mono font-bold transition duration-200 cursor-pointer ${
+                  className={`flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded text-[11px] sm:text-xs font-mono font-bold transition duration-200 cursor-pointer ${
                     isSelected
                       ? "bg-gradient-to-r from-[#ff2a85] to-[#ff7a45] text-black shadow-[0_0_15px_rgba(255,42,133,0.6)]"
                       : "bg-[#170a24]/90 text-[#e2d9e8] border border-[#ff2a85]/30 hover:border-[#ffe600]"

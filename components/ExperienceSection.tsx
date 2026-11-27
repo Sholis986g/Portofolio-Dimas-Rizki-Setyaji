@@ -33,12 +33,12 @@ export default function ExperienceSection() {
             {t.experience.sub}
           </p>
         </div>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-1.5 sm:gap-2 flex-wrap">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id)}
-              className={`px-3 py-1.5 text-xs uppercase tracking-wider font-bold rounded border transition-all ${
+              className={`px-2.5 py-1 sm:px-3 sm:py-1.5 text-[11px] sm:text-xs uppercase tracking-wider font-bold rounded border transition-all cursor-pointer ${
                 filter === cat.id
                   ? "bg-gradient-to-r from-[#ff2a85] to-[#ffe600] text-[#110515] border-transparent shadow-[0_0_15px_rgba(255,42,133,0.5)]"
                   : "bg-[#180a26]/80 text-[#e2d9e8] border-[#ff2a85]/30 hover:border-[#ffe600] hover:text-[#ffe600]"

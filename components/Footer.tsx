@@ -17,8 +17,9 @@ export default function Footer() {
             <a className="email" href="mailto:dimasrizkisetyaji@gmail.com">
               dimasrizkisetyaji@gmail.com ↗
             </a>
-            <div className="text-xs font-mono text-[#ffe600] flex items-center gap-3">
+            <div className="text-xs font-mono text-[#ffe600] flex flex-wrap items-center gap-2 sm:gap-3">
               <span>COMM: +62 822-3444-1456</span>
+              <span className="hidden sm:inline text-[#ff2a85]">•</span>
               <span>{t.footer.base}</span>
             </div>
           </div>

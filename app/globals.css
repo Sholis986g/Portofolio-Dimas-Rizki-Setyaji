@@ -86,7 +86,7 @@ a { color: inherit; text-decoration: none; }
 .skip { position: fixed; top: -5rem; left: 1rem; z-index: 100; background: #000; padding: .7rem; }
 .skip:focus { top: 1rem; }
 
-.wrap { width: min(1280px, 92%); margin-inline: auto; }
+.wrap { width: min(1280px, calc(100% - 1.5rem)); margin-inline: auto; }
 
 /* GTA VI Navigation HUD */
 .site-nav {
@@ -97,22 +97,22 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 5%;
-  background: linear-gradient(180deg, rgba(9, 4, 14, 0.95) 0%, rgba(9, 4, 14, 0.75) 60%, transparent 100%);
-  backdrop-filter: blur(12px);
+  padding: 0.85rem clamp(1rem, 3.5vw, 5%);
+  background: linear-gradient(180deg, rgba(9, 4, 14, 0.96) 0%, rgba(9, 4, 14, 0.82) 60%, transparent 100%);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 42, 133, 0.2);
 }
 
 .site-nav nav, .footer-links {
   display: flex;
   align-items: center;
-  gap: clamp(.8rem, 2.5vw, 2.2rem);
+  gap: clamp(.6rem, 2vw, 1.8rem);
 }
 
 .site-nav nav {
-  font-size: clamp(.78rem, 1.4vw, .95rem);
+  font-size: clamp(.75rem, 1.2vw, .92rem);
   text-transform: uppercase;
-  letter-spacing: .12em;
+  letter-spacing: .1em;
   font-weight: 700;
 }
 
@@ -143,11 +143,12 @@ h4,
   text-transform: uppercase;
   font-weight: 400;
   line-height: 1.02;
+  overflow-wrap: break-word;
 }
 
 /* Wordmark & Headers with GTA aesthetic */
 .wordmark {
-  font-size: 2.3rem;
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
   letter-spacing: .02em;
   background: var(--gta-gradient);
   -webkit-background-clip: text;
@@ -159,7 +160,7 @@ h4,
 }
 
 .gta-vi-badge {
-  font-size: 1.6rem;
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
   line-height: 1;
   color: var(--yellow);
   text-shadow: 0 0 8px var(--pink);
@@ -167,7 +168,7 @@ h4,
 }
 
 h2 {
-  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  font-size: clamp(2rem, 5vw, 4.2rem);
   letter-spacing: .02em;
   background: var(--gta-gradient);
   -webkit-background-clip: text;
@@ -177,7 +178,7 @@ h2 {
 }
 
 h3 {
-  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.9rem);
   letter-spacing: .02em;
 }
 
@@ -222,7 +223,7 @@ h3 {
 }
 
 .hero-copy {
-  padding-block: 8.5rem clamp(4rem, 10vh, 7rem);
+  padding-block: clamp(5.2rem, 11vh, 8.5rem) clamp(2.5rem, 8vh, 6.5rem);
   position: relative;
   z-index: 2;
 }
@@ -259,11 +260,12 @@ h3 {
 }
 
 .hero h1 {
-  font-size: clamp(3.8rem, 10.5vw, 9.8rem);
+  font-size: clamp(2.3rem, 9.2vw, 9.2rem);
   line-height: .96;
   letter-spacing: .01em;
   color: #fff;
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 .hero h1 .highlight {
@@ -451,7 +453,7 @@ h3 {
   background: var(--bg-card);
   border: 1px solid rgba(255, 42, 133, 0.25);
   border-radius: 8px;
-  padding: 1.8rem;
+  padding: clamp(1.2rem, 3vw, 1.8rem);
   backdrop-filter: blur(12px);
   position: relative;
   overflow: hidden;
@@ -509,15 +511,15 @@ h3 {
 /* Stats */
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .stats .stat-item {
   background: var(--bg-card);
   border: 1px solid rgba(255, 42, 133, 0.25);
   border-radius: 8px;
-  padding: 1.8rem;
+  padding: clamp(1.2rem, 3vw, 1.8rem);
   display: flex;
   flex-direction: column-reverse;
   position: relative;
@@ -526,7 +528,7 @@ h3 {
 }
 
 .stats dd {
-  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-size: clamp(2.5rem, 6.5vw, 5.2rem);
   line-height: .95;
   background: var(--gta-gradient);
   -webkit-background-clip: text;
@@ -538,7 +540,7 @@ h3 {
 .stats dt {
   margin-top: .9rem;
   color: var(--yellow);
-  font-size: .95rem;
+  font-size: clamp(.8rem, 1.5vw, .95rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .06em;
@@ -547,8 +549,8 @@ h3 {
 /* Projects grid */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: clamp(1.1rem, 2.5vw, 1.8rem);
 }
 
 .project {
@@ -745,14 +747,14 @@ footer {
   position: fixed;
   inset: 0;
   margin: auto;
-  width: min(1040px, 94vw);
+  width: min(1040px, 95vw);
   max-height: 94svh;
   overflow: auto;
   background: #110719;
   color: #fff;
   border: 2px solid var(--pink);
   border-radius: 8px;
-  padding: clamp(1rem, 2.5vw, 2rem);
+  padding: clamp(0.85rem, 2.5vw, 2rem);
   box-shadow: 0 0 50px rgba(255, 42, 133, 0.5);
 }
 
@@ -766,19 +768,21 @@ footer {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(255, 42, 133, 0.3);
-  padding-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  gap: 0.8rem;
 }
 
-.viewer-head h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); }
+.viewer-head h2 { font-size: clamp(1.4rem, 3.2vw, 2.6rem); }
 .viewer button {
   background: rgba(255, 42, 133, 0.15);
   border: 1px solid var(--pink);
   color: #fff;
-  padding: .6rem 1.1rem;
+  padding: .5rem .9rem;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 700;
   transition: all .2s;
+  font-size: .85rem;
 }
 
 .viewer button:hover {
@@ -787,9 +791,9 @@ footer {
 }
 
 .viewer-art {
-  height: min(65svh, 680px);
+  height: min(58svh, 640px);
   position: relative;
-  margin: 1.2rem 0;
+  margin: 1rem 0;
   background: #09030d;
   border-radius: 6px;
   overflow: hidden;
@@ -798,8 +802,17 @@ footer {
 .viewer-art img { object-fit: contain; }
 .viewer-controls {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .viewer-controls {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
 /* Track Banner */
@@ -809,7 +822,7 @@ footer {
   overflow: hidden;
   display: grid;
   align-items: end;
-  min-height: clamp(30rem, 72svh, 52rem);
+  min-height: clamp(24rem, 64svh, 52rem);
 }
 
 .track-scene { position: absolute; inset: 0; z-index: -1; background: #26132a; }
@@ -823,8 +836,8 @@ footer {
     linear-gradient(to top, #09040e 0%, transparent 35%);
 }
 
-.track-copy { padding-block: 8.5rem 3.5rem; position: relative; z-index: 2; }
-.track-copy h1 { font-size: clamp(3.6rem, 9.5vw, 8.5rem); margin: 0; }
+.track-copy { padding-block: clamp(5.2rem, 11vh, 8.5rem) clamp(2.2rem, 6vh, 4rem); position: relative; z-index: 2; }
+.track-copy h1 { font-size: clamp(2.4rem, 8.5vw, 8.5rem); margin: 0; overflow-wrap: break-word; }
 .track-copy h1 .highlight {
   background: linear-gradient(90deg, #ff2a85 0%, #ff7a45 50%, #ffe600 100%);
   -webkit-background-clip: text;
