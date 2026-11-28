@@ -54,7 +54,11 @@ export default function Hero() {
 
       {/* GTA VI Main Character (MC) Artwork with responsive scaling and layering */}
       <div
-        className="absolute right-[-5%] sm:right-0 md:right-[2%] lg:right-[6%] bottom-0 md:bottom-8 lg:bottom-12 z-0 pointer-events-none h-[52vh] sm:h-[65vh] md:h-[88vh] lg:h-[98vh] max-h-[960px] w-auto aspect-[520/850] select-none flex items-end justify-end opacity-25 sm:opacity-40 md:opacity-100 transition-opacity duration-300"
+        className="absolute right-[-4%] sm:right-[-2%] md:right-[1%] lg:right-[4%] bottom-0 z-0 pointer-events-none h-[55vh] sm:h-[68vh] md:h-[88vh] lg:h-[95vh] max-h-[920px] w-auto aspect-[520/850] select-none flex items-end justify-end opacity-20 sm:opacity-35 md:opacity-100 transition-opacity duration-300"
+        style={{
+          maskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
+        }}
         aria-hidden="true"
       >
         <Image
@@ -70,11 +74,11 @@ export default function Hero() {
       <div className="hero-copy wrap w-full max-w-full md:max-w-2xl lg:max-w-3xl relative z-10">
         {/* Name Title with GTA 6 Gradient & Faulty Neon Flicker */}
         <h1>
-          <span className="title-mask">
+          <span className="block">
             <span className="neon-broken-sign">DIMAS RIZKI</span>
           </span>
-          <span className="title-mask">
-            <span className="text-white drop-shadow-[0_4px_25px_rgba(255,255,255,0.4)]">SETYAJI</span>
+          <span className="block text-white drop-shadow-[0_4px_25px_rgba(255,255,255,0.4)]">
+            SETYAJI
           </span>
         </h1>
 
@@ -84,12 +88,12 @@ export default function Hero() {
         </div>
 
         <p className="mt-2 mb-5 md:mb-6">
-          <span className="text-xs sm:text-sm md:text-base text-[#cfc2d7] leading-relaxed block max-w-2xl">
+          <span className="text-xs sm:text-sm md:text-base text-[#cfc2d7] leading-relaxed block max-w-xl">
             {t.hero.bio}
           </span>
         </p>
 
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 md:mb-8">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-5 md:mb-6">
           <a className="cta w-full sm:w-auto justify-center text-center" href="#karya">
             {t.hero.explore} <span aria-hidden="true">↓</span>
           </a>
@@ -99,12 +103,12 @@ export default function Hero() {
         </div>
 
         {/* Interactive GTA VI Scene Selector HUD */}
-        <div className="pt-3 md:pt-4 border-t border-[#ff2a85]/30 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+        <div className="pt-3 md:pt-4 border-t border-[#ff2a85]/30 flex flex-col gap-2.5 max-w-xl">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-[11px] sm:text-xs font-mono font-bold text-[#9f8ea8] uppercase tracking-wider">
               {t.hero.atmosphere}
             </span>
-            <span className="text-[10px] sm:text-[11px] font-mono font-black text-[#ff7a45] uppercase tracking-[0.14em] bg-[#170a24]/90 px-2 py-0.5 sm:px-2.5 sm:py-1 border border-[#ff7a45]/40 rounded">
+            <span className="text-[10px] sm:text-[11px] font-mono font-black text-[#ff7a45] uppercase tracking-[0.14em] bg-[#170a24]/90 px-2.5 py-1 border border-[#ff7a45]/40 rounded">
               {scene.sector}
             </span>
           </div>

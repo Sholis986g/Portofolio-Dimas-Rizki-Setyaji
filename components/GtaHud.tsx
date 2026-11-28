@@ -233,6 +233,113 @@ export function ViceRadioHud() {
   );
 }
 
+// Unified Sleek Cockpit Telemetry Bar for Desktop Navbar
+export function CockpitTelemetry() {
+  const [stars, setStars] = useState(5);
+  const [time, setTime] = useState("00:00:00");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const oscRef = useRef<OscillatorNode | null>(null);
+  const gainRef = useRef<GainNode | null>(null);
+
+  useEffect(() => {
+    const start = Date.now();
+    const interval = setInterval(() => {
+      const diff = Math.floor((Date.now() - start) / 1000);
+      const h = String(Math.floor(diff / 3600)).padStart(2, "0");
+      const m = String(Math.floor((diff % 3600) / 60)).padStart(2, "0");
+      const s = String(diff % 60).padStart(2, "0");
+      setTime(`${h}:${m}:${s}`);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleStarClick = (idx: number) => {
+    const newLevel = idx + 1;
+    setStars(newLevel);
+    playSfx(newLevel >= 4 ? "siren" : "star");
+  };
+
+  const toggleRadio = () => {
+    if (isPlaying) {
+      if (gainRef.current) {
+        gainRef.current.gain.exponentialRampToValueAtTime(0.001, (audioCtxRef.current?.currentTime || 0) + 0.2);
+        setTimeout(() => {
+          oscRef.current?.stop();
+          setIsPlaying(false);
+        }, 200);
+      } else {
+        setIsPlaying(false);
+      }
+    } else {
+      try {
+        const ctx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+        audioCtxRef.current = ctx;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(220, ctx.currentTime);
+        gain.gain.setValueAtTime(0.001, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.03, ctx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        oscRef.current = osc;
+        gainRef.current = gain;
+        setIsPlaying(true);
+        playSfx("click");
+      } catch {
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  return (
+    <div className="hidden xl:flex items-center gap-2.5 px-3 py-1 bg-[#13071f]/85 border border-[#ff2a85]/35 rounded-full backdrop-blur-md text-xs font-mono select-none">
+      {/* Rec */}
+      <div className="flex items-center gap-1.5 text-[#ffe600] font-bold">
+        <span className="rec-dot" />
+        <span className="text-[11px]">REC {time}</span>
+      </div>
+
+      <span className="text-[#ff2a85]/40 text-xs">|</span>
+
+      {/* Wanted */}
+      <div className="flex items-center gap-1">
+        <span className="text-[10px] text-[#ffe600] font-black tracking-wider">WANTED</span>
+        <div className="flex gap-0.5">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => handleStarClick(i)}
+              className={`text-xs cursor-pointer transition-transform hover:scale-125 ${
+                i < stars ? "text-[#ffe600] drop-shadow-[0_0_6px_rgba(255,230,0,0.8)]" : "text-[#3d234a]"
+              }`}
+              title={`Wanted Level ${i + 1}`}
+            >
+              ★
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <span className="text-[#ff2a85]/40 text-xs">|</span>
+
+      {/* Radio */}
+      <button
+        type="button"
+        onClick={toggleRadio}
+        className="flex items-center gap-1.5 text-[11px] text-[#cfc2d7] hover:text-[#ffe600] transition cursor-pointer font-bold"
+        title="Toggle GTA Ambient Synth"
+      >
+        <span className={`w-1.5 h-1.5 rounded-full ${isPlaying ? "bg-[#00f0ff] animate-ping" : "bg-[#ff2a85]"}`} />
+        <span>{isPlaying ? "RADIO ON" : "RADIO"}</span>
+      </button>
+    </div>
+  );
+}
+
 export function MissionPassedBanner({
   title = "MISSION PASSED",
   subtitle = "RESPECT +",

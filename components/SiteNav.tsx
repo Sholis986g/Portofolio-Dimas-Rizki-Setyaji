@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { LiveRecTicker, WantedStars, ViceRadioHud } from "./GtaHud";
+import { CockpitTelemetry, LiveRecTicker, WantedStars, ViceRadioHud } from "./GtaHud";
 import { useLanguage } from "./LanguageContext";
 
 export default function SiteNav() {
@@ -59,12 +59,8 @@ export default function SiteNav() {
           DRS <span className="gta-vi-badge">VI</span>
         </Link>
 
-        {/* Cockpit HUD Bar beside DRS VI on large desktop */}
-        <div className="hidden xl:flex items-center gap-2">
-          <LiveRecTicker />
-          <WantedStars count={5} active={5} />
-          <ViceRadioHud />
-        </div>
+        {/* Unified Cockpit Telemetry Capsule beside DRS VI on large desktop */}
+        <CockpitTelemetry />
 
         {/* Mobile / Tablet Right Controls: Lang Switcher + Hamburger */}
         <div className="flex items-center gap-2 lg:hidden">
